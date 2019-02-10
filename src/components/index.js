@@ -1,8 +1,8 @@
-import Navbar from './Navbar'
-import ChartContainer from './ChartContainer'
-import D3Chart from './D3Chart'
-import ReactChart from './ReactChart'
-import HybridChart from './HybridChart'
+import Navbar from './UI/Navbar'
+import ChartContainer from './Charts/ChartContainer'
+import D3Chart from './Charts/D3Chart'
+import ReactChart from './Charts/ReactChart'
+import HybridChart from './Charts/HybridChart'
 
 export {
 	Navbar,

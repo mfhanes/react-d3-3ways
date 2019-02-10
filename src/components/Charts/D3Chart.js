@@ -5,7 +5,7 @@ import * as d3 from "d3"
 class D3Chart extends Component {
   constructor() {
     super()
-    this.state = { manualUpdate: false }
+    this.state = { forceUpdate: false }
     this.drawChart = this.drawChart.bind(this)
     this.handleCheck = this.handleCheck.bind(this)
   }
@@ -15,16 +15,16 @@ class D3Chart extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { manualUpdate } = this.state
+    const { forceUpdate } = this.state
 
-    if (manualUpdate && prevProps.dataset !== this.props.dataset) {
+    if (forceUpdate && prevProps.dataset !== this.props.dataset) {
       this.drawChart(true)
     }
   }
 
   handleCheck(e) {
     this.setState(state => {
-      return { manualUpdate: !state.manualUpdate }
+      return { forceUpdate: !state.forceUpdate }
     })
   }
 
@@ -56,6 +56,8 @@ class D3Chart extends Component {
       .range([h, 0])
 
     if (!update) {
+      // If mounting component for the first time, use D3 to create DOM elements and their attributes.
+
       // DOM
       const svg = d3
         .select(this.svg)
@@ -92,6 +94,8 @@ class D3Chart extends Component {
         .attr("fill", "white")
         .attr("text-anchor", "middle")
     } else {
+      // If updating, use D3 to select relevant DOM nodes and update their attributes.
+      
       const g = d3.select("#bar-g")
 
       // Data Bars

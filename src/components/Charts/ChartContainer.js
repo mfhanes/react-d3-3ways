@@ -12,6 +12,7 @@ class ChartContainer extends Component {
   }
 
   handleClick() {
+    // Randomly generate a new 10-integer array for state.dataset.
     const newDataset = []
 
     while (newDataset.length < 10) {
@@ -24,6 +25,8 @@ class ChartContainer extends Component {
   render() {
     const { children } = this.props
     const { dataset } = this.state
+
+    // Clone children into Routes (to make the Navbar usable) and pass them state.dataset as a prop.
 
     const childrenAsRoutes = React.Children.map(children, child => {
       return (
