@@ -21,12 +21,12 @@ class ReactChart extends Component {
     // Scales
     const xScale = d3
       .scaleBand()
-      .domain(d3.range(dataset.length))
+      .domain(d3.range(10))
       .rangeRound([0, w])
       .paddingInner(0.05)
     const yScale = d3
       .scaleLinear()
-      .domain([0, d3.max(dataset)])
+      .domain([0, 50])
       .range([h, 0])
 
     return (
